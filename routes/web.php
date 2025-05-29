@@ -13,6 +13,37 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+use App\Http\Controllers\AdminController;
+
+Route::get('/', [AdminController::class, 'index'])->name('dashboard');
+Route::get('/dashboard', [AdminController::class, 'index']);
+
+use App\Http\Controllers\CultivoController;
+use App\Http\Controllers\SensorController;
+use App\Http\Controllers\RiegoController;
+use App\Http\Controllers\ConfiguracionController;
+use App\Http\Controllers\ReporteController;
+use App\Http\Controllers\UsuarioController;
+
+// Ruta principal
+Route::get('/', [AdminController::class, 'index'])->name('dashboard');
+
+// Cultivos
+Route::get('/cultivos', [CultivoController::class, 'index'])->name('cultivos');
+
+// Sensores
+Route::get('/sensores', [SensorController::class, 'index'])->name('sensores');
+
+// Riego
+Route::get('/riego', [RiegoController::class, 'index'])->name('riego');
+
+// Configuración
+Route::get('/configuracion', [ConfiguracionController::class, 'index'])->name('configuracion');
+
+// Reportes
+Route::get('/reportes', [ReporteController::class, 'index'])->name('reportes');
+
+// Usuarios
+Route::get('/usuarios', [UsuarioController::class, 'index'])->name('usuarios');
+
+
