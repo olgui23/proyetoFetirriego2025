@@ -12,10 +12,39 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,300,400,700,900" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet" />
 
+    <!-- Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
     <!-- CSS del template -->
     <link href="{{ asset('startbootstrap-business-casual-gh-pages/css/styles.css') }}" rel="stylesheet">
+    
+    <!-- CSS personalizado -->
+    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 </head>
 <body>
+
+    <!-- Botón de cierre de sesión -->
+   @auth
+<div class="user-profile-container" style="position: absolute; top: 20px; right: 30px; z-index: 9999;">
+    <div class="user-dropdown">
+        <button class="user-btn">
+            <i class="fas fa-user-circle user-icon"></i>
+            <span class="user-name">{{ Auth::user()->name }}</span>
+            <i class="fas fa-caret-down dropdown-arrow"></i>
+        </button>
+        <div class="dropdown-content">
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button type="submit" class="dropdown-item">
+                    <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+@endauth
+
+
 
     <!-- Header -->
     <header>

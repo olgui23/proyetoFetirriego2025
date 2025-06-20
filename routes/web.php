@@ -1,23 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
-
-Route::get('/', [AdminController::class, 'index'])->name('dashboard');
-Route::get('/dashboard', [AdminController::class, 'index']);
-
 use App\Http\Controllers\CultivoController;
 use App\Http\Controllers\SensorController;
 use App\Http\Controllers\RiegoController;
@@ -25,25 +10,35 @@ use App\Http\Controllers\ConfiguracionController;
 use App\Http\Controllers\ReporteController;
 use App\Http\Controllers\UsuarioController;
 
-// Ruta principal
-Route::get('/', [AdminController::class, 'index'])->name('dashboard');
+// Rutas públicas (sin autenticación)
+Route::middleware('guest')->group(function () {
+    Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+    Route::post('/login', [AuthController::class, 'login']);
+    Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('register');
+    Route::post('/register', [AuthController::class, 'register']);
+});
 
-// Cultivos
-Route::get('/cultivos', [CultivoController::class, 'index'])->name('cultivos');
+// Rutas protegidas (requieren autenticación)
+Route::middleware('auth')->group(function () {
+    // Cerrar sesión
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    
+    // Dashboard
+    Route::redirect('/', '/dashboard'); // Redirige la raíz al dashboard
+    Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
+    
+    // Todas tus otras rutas protegidas...
+    Route::get('/cultivos', [CultivoController::class, 'index'])->name('cultivos');
+    Route::get('/sensores', [SensorController::class, 'index'])->name('sensores');
+    Route::get('/riego', [RiegoController::class, 'index'])->name('riego');
+    Route::get('/configuracion', [ConfiguracionController::class, 'index'])->name('configuracion');
+    Route::get('/reportes', [ReporteController::class, 'index'])->name('reportes');
+    Route::get('/usuarios', [UsuarioController::class, 'index'])->name('usuarios');
+});
 
-// Sensores
-Route::get('/sensores', [SensorController::class, 'index'])->name('sensores');
-
-// Riego
-Route::get('/riego', [RiegoController::class, 'index'])->name('riego');
-
-// Configuración
-Route::get('/configuracion', [ConfiguracionController::class, 'index'])->name('configuracion');
-
-// Reportes
-Route::get('/reportes', [ReporteController::class, 'index'])->name('reportes');
-
-// Usuarios
-Route::get('/usuarios', [UsuarioController::class, 'index'])->name('usuarios');
-
-
+// Redirección para rutas no definidas (opcional)
+Route::fallback(function () {
+    return auth()->check() 
+        ? redirect()->route('dashboard')
+        : redirect()->route('login');
+});
