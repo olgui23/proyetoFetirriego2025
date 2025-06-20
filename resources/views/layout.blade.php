@@ -1,80 +1,79 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Sistema de Fertirrigación para cultivo de lechuga en Tiquipaya" />
+    <meta name="author" content="" />
     <title>@yield('title', 'Fertirriego')</title>
-
-    <!-- Ícono -->
-    <link rel="icon" href="{{ asset('startbootstrap-business-casual-gh-pages/favicon.ico') }}" type="image/x-icon">
-
-    <!-- Fuentes Google -->
-    <link href="https://fonts.googleapis.com/css?family=Raleway:100,300,400,700,900" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet" />
-
-    <!-- Font Awesome para iconos -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
-    <!-- CSS del template -->
-    <link href="{{ asset('startbootstrap-business-casual-gh-pages/css/styles.css') }}" rel="stylesheet">
-    
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="{{ asset('startbootstrap-agency-gh-pages/assets/favicon.ico') }}" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="{{ asset('startbootstrap-agency-gh-pages/css/styles.css') }}" rel="stylesheet" />
     <!-- CSS personalizado -->
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 </head>
-<body>
+<body id="page-top">
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+    <div class="container">
+        <a class="navbar-brand" href="#page-top">
+    <img src="{{ asset('assets/img/logo1.jpg') }}" alt="Fertirriego" />
+</a>
 
-    <!-- Botón de cierre de sesión -->
-   @auth
-<div class="user-profile-container" style="position: absolute; top: 20px; right: 30px; z-index: 9999;">
-    <div class="user-dropdown">
-        <button class="user-btn">
-            <i class="fas fa-user-circle user-icon"></i>
-            <span class="user-name">{{ Auth::user()->name }}</span>
-            <i class="fas fa-caret-down dropdown-arrow"></i>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            Menu
+            <i class="fas fa-bars ms-1"></i>
         </button>
-        <div class="dropdown-content">
-            <form method="POST" action="{{ route('logout') }}">
-                @csrf
-                <button type="submit" class="dropdown-item">
-                    <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
-                </button>
-            </form>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+                <li class="nav-item"><a class="nav-link" href="{{ route('dashboard') }}">Inicio</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('cultivos') }}">Cultivos</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('sensores') }}">Sensores</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('riego') }}">Riego</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('configuracion') }}">Configuración</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('reportes') }}">Reportes</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('usuarios') }}">Usuarios</a></li>
+                
+                @auth
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-user-circle me-1"></i> {{ Auth::user()->name }}
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <li>
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <button type="submit" class="dropdown-item">
+                                    <i class="fas fa-sign-out-alt me-1"></i> Cerrar Sesión
+                                </button>
+                            </form>
+                        </li>
+                    </ul>
+                </li>
+                @endauth
+            </ul>
         </div>
     </div>
-</div>
-@endauth
+</nav>
 
-
-
-    <!-- Header -->
-    <header>
-        <h1 class="site-heading text-center text-faded d-none d-lg-block">
-            <span class="site-heading-upper text-success mb-3">Sistema de Fertirrigación</span>
-            <span class="site-heading-lower">Cultivo de Lechuga en Tiquipaya</span>
-        </h1>
+    <!-- Masthead/Header -->
+    <header class="masthead">
+        <div class="container">
+            <div class="masthead-subheading">Sistema de Fertirrigación</div>
+            <div class="masthead-heading text-uppercase">Cultivo de Lechuga en Tiquipaya</div>
+            <a class="btn btn-primary btn-xl text-uppercase" href="#services">Ver más</a>
+        </div>
     </header>
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
-        <div class="container">
-            <a class="navbar-brand text-uppercase fw-bold d-lg-none" href="{{ route('dashboard') }}">Fertirriego</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+   
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mx-auto">
-                    <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{{ route('dashboard') }}">Inicio</a></li>
-                    <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{{ route('cultivos') }}">Cultivos</a></li>
-                    <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{{ route('sensores') }}">Sensores</a></li>
-                    <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{{ route('riego') }}">Riego</a></li>
-                    <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{{ route('configuracion') }}">Configuración</a></li>
-                    <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{{ route('reportes') }}">Reportes</a></li>
-                    <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{{ route('usuarios') }}">Usuarios</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    
 
     <!-- Contenido dinámico -->
     <main>
@@ -82,14 +81,30 @@
     </main>
 
     <!-- Footer -->
-    <footer class="footer text-faded text-center py-5">
+    <footer class="footer py-4">
         <div class="container">
-            <p class="m-0 small">&copy; Fertirriego Tiquipaya {{ date('Y') }}</p>
+            <div class="row align-items-center">
+                <div class="col-lg-4 text-lg-start">Copyright &copy; Fertirriego Tiquipaya {{ date('Y') }}</div>
+                <div class="col-lg-4 my-3 my-lg-0">
+                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <div class="col-lg-4 text-lg-end">
+                    <a class="link-dark text-decoration-none me-3" href="#!">Política de Privacidad</a>
+                    <a class="link-dark text-decoration-none" href="#!">Términos de Uso</a>
+                </div>
+            </div>
         </div>
     </footer>
 
-    <!-- JS -->
+   
+
+    <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="{{ asset('startbootstrap-business-casual-gh-pages/js/scripts.js') }}"></script>
+    <!-- Core theme JS-->
+    <script src="{{ asset('startbootstrap-agency-gh-pages/js/scripts.js') }}"></script>
+    <!-- SB Forms JS-->
+    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 </body>
 </html>
