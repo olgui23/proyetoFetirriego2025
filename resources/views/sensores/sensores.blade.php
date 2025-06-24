@@ -5,29 +5,15 @@
 @section('contenido')
 <section class="page-section clearfix">
     <div class="container">
-        <h2 class="text-center text-success">Listado de Sensores</h2>
+        <h2 class="text-center text-success">Sensores</h2>
 
         <table class="table table-bordered table-striped bg-white">
-            <thead>
-                <tr>
-                    <th>Tipo</th>
-                    <th>Ubicación</th>
-                    <th>Unidad de Medida</th>
-                    <th>Valor</th>
-                    <th>Estado</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($sensores as $sensor)
-                <tr>
-                    <td>{{ $sensor->tipo }}</td>
-                    <td>{{ $sensor->ubicacion }}</td>
-                    <td>{{ $sensor->unidad_medida }}</td>
-                    <td>{{ $sensor->valor ?? 'N/A' }}</td>
-                    <td>{{ $sensor->activo ? 'Activo' : 'Inactivo' }}</td>
-                </tr>
-                @endforeach
-            </tbody>
+            <iframe 
+  src="http://192.168.180.173" 
+  width="100%" 
+  height="700" 
+  style="border: none; border-radius: 12px;">
+</iframe>
         </table>
     </div>
 </section>

@@ -36,7 +36,7 @@
                 <li class="nav-item"><a class="nav-link" href="{{ route('dashboard') }}">Inicio</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('cultivos') }}">Cultivos</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('sensores') }}">Sensores</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('riego') }}">Riego</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('riego') }}">Consulta Plaga</a></li>-->
                 <li class="nav-item"><a class="nav-link" href="{{ route('configuracion') }}">Configuración</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('reportes') }}">Reportes</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('usuarios') }}">Usuarios</a></li>
