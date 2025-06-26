@@ -68,3 +68,21 @@ footer {
     background-color: #C7EAB2;
     color: #2A2A2A;
 }
+
+.btn-impacto {
+    background-color: #64A500;
+    color: white;
+    border: none;
+    box-shadow: 0 4px 12px rgba(100, 165, 0, 0.5);
+    transition: all 0.3s ease-in-out;
+    font-weight: 600;
+    padding: 0.6rem 1.2rem;
+    border-radius: 0.375rem;
+}
+
+.btn-impacto:hover {
+    background-color: #558e00;
+    box-shadow: 0 6px 16px rgba(85, 142, 0, 0.6);
+    color: white;
+    text-decoration: none;
+}

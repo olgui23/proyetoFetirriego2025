@@ -13,9 +13,15 @@ return new class extends Migration
     {
         Schema::create('reportes', function (Blueprint $table) {
             $table->id();
-            $table->string('titulo');
-            $table->text('descripcion');
-            $table->date('fecha');
+            $table->date('fecha_registro');
+            $table->string('tipo_lechuga');
+            $table->decimal('superficie', 8, 2);
+            $table->string('unidad_medida');
+            $table->string('etapa_crecimiento');
+            $table->string('estado_cultivo');
+            $table->string('estacion_anio');
+            $table->text('observaciones')->nullable();
+            $table->string('foto_cultivo')->nullable();
             $table->timestamps();
         });
     }

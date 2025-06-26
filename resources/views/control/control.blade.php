@@ -1,50 +1,30 @@
 @extends('layout')
 
-@section('title', 'Control del Cultivo')
+@section('title', 'Sensores')
 
 @section('contenido')
-<div class="container mt-5">
-    <h2 class="fw-bold text-success mb-4">🌱 Control del Cultivo</h2>
+<section class="page-section clearfix py-5">
+    <div class="container">
+        <h2 class="text-center text-success mb-4">Sensores</h2>
 
-    @if(session('mensaje'))
-        <div class="alert alert-success">{{ session('mensaje') }}</div>
-    @endif
-
-    <div class="row g-4">
-        <div class="col-md-4">
-            <div class="card shadow-sm border-success">
-                <div class="card-body text-center">
-                    <h5 class="card-title">Humedad del Suelo</h5>
-                    <p class="display-6">{{ $datos['humedad'] }}%</p>
+        <div class="card shadow-lg border-0 rounded-4">
+            <div class="card-body p-4">
+                <div class="ratio ratio-16x9 shadow rounded-4 overflow-hidden">
+                    <iframe 
+                        src="http://192.168.180.173"
+                        width="100%" 
+                        height="700" 
+                        style="border: none;">
+                    </iframe>
                 </div>
-            </div>
-        </div>
 
-        <div class="col-md-4">
-            <div class="card shadow-sm border-primary">
-                <div class="card-body text-center">
-                    <h5 class="card-title">pH del Suelo</h5>
-                    <p class="display-6">{{ $datos['ph'] }}</p>
+                <div class="text-center mt-4">
+                    <a href="#impacto" class="btn btn-impacto btn-lg me-2">Ver impacto</a>
+                    <a href="/" class="btn btn-impacto btn-lg">Inicio</a>
                 </div>
-            </div>
-        </div>
 
-        <div class="col-md-4">
-            <div class="card shadow-sm border-warning">
-                <div class="card-body text-center">
-                    <h5 class="card-title">Temperatura Ambiente</h5>
-                    <p class="display-6">{{ $datos['temperatura'] }} °C</p>
-                </div>
             </div>
         </div>
     </div>
-
-    <div class="mt-4 text-center">
-        <p class="fs-5">Estado del riego automático: <strong>{{ $datos['estadoRiego'] }}</strong></p>
-        <form action="{{ route('control.activar') }}" method="POST">
-            @csrf
-            <button class="btn btn-outline-success btn-lg">Activar Riego Automático</button>
-        </form>
-    </div>
-</div>
+</section>
 @endsection

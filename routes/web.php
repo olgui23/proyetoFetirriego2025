@@ -14,6 +14,7 @@ use App\Http\Controllers\MiCultivoController;
 use App\Http\Controllers\GuiaController;
 use App\Http\Controllers\AsistenteController;
 use App\Http\Controllers\ControlCultivoController;
+use App\Http\Controllers\ExportController;
 
 // Rutas públicas (sin autenticación)
 Route::middleware('guest')->group(function () {
@@ -34,11 +35,15 @@ Route::middleware('auth')->group(function () {
     
     // Todas tus otras rutas protegidas...
    
-    // Rutas de Mi Cultivo
+    // // Rutas de Mi Cultivo
     Route::prefix('mi-cultivo')->group(function () {
     Route::get('/reportes', [MiCultivoController::class, 'reportes'])->name('miCultivo.reportes');
+    Route::post('/reportes', [MiCultivoController::class, 'guardarReporte'])->name('miCultivo.reportes.guardar');
+    Route::get('/reportes/pdf', [ExportController::class, 'descargarReportePDF'])->name('miCultivo.reportes.pdf');
+
     Route::get('/calendario', [MiCultivoController::class, 'calendario'])->name('miCultivo.calendario');
     });
+
 
     // Rutas para Tu Guia
     Route::prefix('guia')->group(function () {
