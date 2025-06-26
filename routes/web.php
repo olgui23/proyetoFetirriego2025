@@ -13,6 +13,7 @@ use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\MiCultivoController;
 use App\Http\Controllers\GuiaController;
 use App\Http\Controllers\AsistenteController;
+use App\Http\Controllers\ControlCultivoController;
 
 // Rutas públicas (sin autenticación)
 Route::middleware('guest')->group(function () {
@@ -51,7 +52,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/asistente', [AsistenteController::class, 'index'])->name('asistente');
     Route::post('/asistente', [AsistenteController::class, 'responder'])->name('asistente.responder');
 
-    
+    // Rutas para Control de Riego y sensores: 
+    Route::get('/control', [ControlCultivoController::class, 'index'])->name('control.index');
+    Route::post('/control/activar', [ControlCultivoController::class, 'activarRiego'])->name('control.activar');
+
     
     
     

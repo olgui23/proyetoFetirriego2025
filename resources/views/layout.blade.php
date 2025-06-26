@@ -36,7 +36,7 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                     <li class="nav-item"><a class="nav-link" href="{{ route('dashboard') }}">Inicio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#control">Control del Cultivo</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('control.index') }}">Control del Cultivo</a></li>
 
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="cultivoDropdown" role="button" data-bs-toggle="dropdown">
