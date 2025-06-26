@@ -13,6 +13,12 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+use App\Services\WeatherService;
+
+Route::get('/clima-tiquipaya', function() {
+    return (new WeatherService())->getWeather();
+});
+
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
