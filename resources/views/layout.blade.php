@@ -43,8 +43,8 @@
                             Mi Cultivo
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Reportes</a></li>
-                            <li><a class="dropdown-item" href="#">Calendario del Agricultor</a></li>
+                            <li><a class="dropdown-item" href="{{ route('miCultivo.reportes') }}">Reportes</a></li>
+                            <li><a class="dropdown-item" href="{{ route('miCultivo.calendario') }}">Calendario del Agricultor</a></li>
                         </ul>
                     </li>
 

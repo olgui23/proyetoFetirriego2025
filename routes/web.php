@@ -10,6 +10,8 @@ use App\Http\Controllers\ConfiguracionController;
 use App\Http\Controllers\ReporteController;
 use App\Http\Controllers\UsuarioController;
 
+ use App\Http\Controllers\MiCultivoController;
+
 // Rutas públicas (sin autenticación)
 Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
@@ -28,6 +30,20 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
     
     // Todas tus otras rutas protegidas...
+   
+    // Rutas de Mi Cultivo
+    Route::prefix('mi-cultivo')->group(function () {
+    Route::get('/reportes', [MiCultivoController::class, 'reportes'])->name('miCultivo.reportes');
+    Route::get('/calendario', [MiCultivoController::class, 'calendario'])->name('miCultivo.calendario');
+    });
+
+    
+    
+    
+    
+    
+    
+    
     Route::get('/cultivos', [CultivoController::class, 'index'])->name('cultivos');
     Route::get('/sensores', [SensorController::class, 'index'])->name('sensores');
     Route::get('/riego', [RiegoController::class, 'index'])->name('riego');
