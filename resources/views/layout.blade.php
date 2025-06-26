@@ -60,7 +60,7 @@
                         </ul>
                     </li>
 
-                    <li class="nav-item"><a class="nav-link" href="#">Asistente</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('asistente') }}">Asistente</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Administración</a></li>
 
                     @auth

@@ -12,6 +12,7 @@ use App\Http\Controllers\UsuarioController;
 // Nuevos Controladores
 use App\Http\Controllers\MiCultivoController;
 use App\Http\Controllers\GuiaController;
+use App\Http\Controllers\AsistenteController;
 
 // Rutas públicas (sin autenticación)
 Route::middleware('guest')->group(function () {
@@ -45,6 +46,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/salud', [GuiaController::class, 'salud'])->name('guia.salud');
     Route::get('/practicas', [GuiaController::class, 'practicas'])->name('guia.practicas');
     });
+
+    // Rutas para Asistente
+    Route::get('/asistente', [AsistenteController::class, 'index'])->name('asistente');
+    Route::post('/asistente', [AsistenteController::class, 'responder'])->name('asistente.responder');
 
     
     
