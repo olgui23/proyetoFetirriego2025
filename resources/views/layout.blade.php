@@ -53,10 +53,10 @@
                             Tu Guía
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Tipos de lechuga</a></li>
-                            <li><a class="dropdown-item" href="#">Plagas & Enfermedades</a></li>
-                            <li><a class="dropdown-item" href="#">Salud vegetal</a></li>
-                            <li><a class="dropdown-item" href="#">Buenas prácticas</a></li>
+                            <li><a class="dropdown-item" href="{{ route('guia.variedades') }}">Tipos de lechuga</a></li>
+                            <li><a class="dropdown-item" href="{{ route('guia.plagas') }}">Plagas & Enfermedades</a></li>
+                            <li><a class="dropdown-item" href="{{ route('guia.salud') }}">Salud vegetal</a></li>
+                            <li><a class="dropdown-item" href="{{ route('guia.practicas') }}">Buenas prácticas</a></li>
                         </ul>
                     </li>
 

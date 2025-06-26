@@ -9,8 +9,9 @@ use App\Http\Controllers\RiegoController;
 use App\Http\Controllers\ConfiguracionController;
 use App\Http\Controllers\ReporteController;
 use App\Http\Controllers\UsuarioController;
-
- use App\Http\Controllers\MiCultivoController;
+// Nuevos Controladores
+use App\Http\Controllers\MiCultivoController;
+use App\Http\Controllers\GuiaController;
 
 // Rutas públicas (sin autenticación)
 Route::middleware('guest')->group(function () {
@@ -37,7 +38,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/calendario', [MiCultivoController::class, 'calendario'])->name('miCultivo.calendario');
     });
 
-    
+    // Rutas para Tu Guia
+    Route::prefix('guia')->group(function () {
+    Route::get('/variedades', [GuiaController::class, 'variedades'])->name('guia.variedades');
+    Route::get('/plagas', [GuiaController::class, 'plagas'])->name('guia.plagas');
+    Route::get('/salud', [GuiaController::class, 'salud'])->name('guia.salud');
+    Route::get('/practicas', [GuiaController::class, 'practicas'])->name('guia.practicas');
+    });
+
     
     
     
